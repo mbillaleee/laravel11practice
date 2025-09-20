@@ -1,0 +1,14 @@
+Core command / packages
+ composer create-project laravel/laravel laravel11practice "11.*"
+ composer require laravel/ui
+ php artisan ui bootstrap --auth
+
+
+
+
+
+
+ 
+
+Internal command
+
