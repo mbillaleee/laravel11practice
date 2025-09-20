@@ -1,0 +1,71 @@
+🔹 Step 1: Google Cloud Console এ যাও
+
+👉 Google Cloud Console
+
+🔹 Step 2: Project Create করো
+
+উপরে Google Cloud Console এ "Select Project" এ click করো।
+
+New Project এ click করো।
+
+Project এর নাম দাও (যেমন: laravel11-socialite)।
+
+Create করো।
+
+🔹 Step 3: API Enable করো
+
+APIs & Services → Library এ যাও।
+
+Search করো → Google+ API বা Google People API।
+
+Enable এ click করো।
+
+🔹 Step 4: OAuth Consent Screen সেট করো
+
+Left Sidebar এ → APIs & Services → OAuth consent screen এ যাও।
+
+External select করো → Continue।
+
+App Name: Laravel App
+
+User Support Email: তোমার Gmail দাও।
+
+Developer Contact Information: তোমার Gmail দাও।
+
+Save & Continue (Scopes optional)।
+
+🔹 Step 5: OAuth Client ID বানাও
+
+Left Sidebar → Credentials এ যাও।
+
++ Create Credentials → OAuth Client ID select করো।
+
+Application type: Web application।
+
+Name: Laravel Google Login।
+
+👉 Authorized JavaScript origins এ দাও:
+
+http://127.0.0.1:8000
+
+
+👉 Authorized redirect URIs এ দাও:
+
+http://127.0.0.1:8000/auth/google/callback
+
+
+Create এ click করো।
+
+🔹 Step 6: Client ID & Secret কপি করো
+
+Create হবার পর একটা popup আসবে →
+
+Client ID
+
+Client Secret
+
+এইগুলো তোমার .env ফাইলে বসাও 👇
+
+GOOGLE_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxx
+GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/callback
