@@ -35,6 +35,21 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        @if (auth()->user()->role == \App\Enums\UserRole::Admin)
+                        <li><a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                        @can('manage-users')
+                        <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
+                        @endcan
+                        @can('manage-roles')
+                        <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
+                        @endcan
+                        @can('manage-product')
+                        <li><a class="nav-link" href="{{ route('products.index') }}">Manage Product</a></li>
+                        @endcan
+                        @else
+                        <li><a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a></li>
+                        @endif
+
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
@@ -48,16 +63,6 @@
                         </li>
                         @endif
                         @else
-
-                        @can('manage-users')
-                        <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
-                        @endcan
-                        @can('manage-roles')
-                        <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
-                        @endcan
-                        @can('manage-product')
-                        <li><a class="nav-link" href="{{ route('products.index') }}">Manage Product</a></li>
-                        @endcan
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -76,6 +81,7 @@
                             </div>
                         </li>
                         @endguest
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

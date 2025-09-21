@@ -9,6 +9,9 @@ Core command / packages
  php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 
 
+ php artisan make:enum Enum/UserRole
+
+
 
 
 
