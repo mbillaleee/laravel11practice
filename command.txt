@@ -12,6 +12,7 @@ Core command / packages
  php artisan make:enum Enum/UserRole
 
 
+php artisan install:api
 
 
 

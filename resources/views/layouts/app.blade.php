@@ -35,6 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                         @auth
                         @if (auth()->user()->role == \App\Enums\UserRole::Admin)
                         <li><a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
                         @can('manage-users')
@@ -49,6 +50,7 @@
                         @else
                         <li><a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a></li>
                         @endif
+                        @endauth
 
                         @guest
                         @if (Route::has('login'))

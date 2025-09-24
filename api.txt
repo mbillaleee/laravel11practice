@@ -1,0 +1,18 @@
+http://127.0.0.1:8000/api/register?name=Billal&email=billal1xx0q@gmail.com&password=12345678&password_confirmation=12345678
+
+http://127.0.0.1:8000/api/login?email=billal@gmail.com&password=12345678  (Header:: Accept : multipart/jsondata)
+
+
+For Authorization: (Header:: Accept : multipart/jsondata, Authorization : Bearer 2|YYdSFuvxZPz8BDvyZ20LydU6KOhbNtDCl9L5YeSs84cb9d38)
+
+ttp://127.0.0.1:8000/api/posts 
+
+http://127.0.0.1:8000/api/posts?title=First title&body=First body
+
+http://127.0.0.1:8000/api/posts/1
+
+http://127.0.0.1:8000/api/posts/1?title=change title&body=change body  (PUT)
+
+http://127.0.0.1:8000/api/posts/1 (DELETE)
+
+
