@@ -3,6 +3,7 @@
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OpenAPIController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
@@ -49,3 +50,11 @@ Route::group(['middleware' => ['auth','admin']], function() {
 
 Route::get('stripe', [StripeController::class, 'stripe'])->name('stripe');
 Route::post('stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
+
+
+
+
+Route::get('paypal', [PaypalController::class, 'index'])->name('paypal');
+Route::post('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
+Route::get('paypal/payment-success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
+Route::get('paypal/payment-cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment.cancel');

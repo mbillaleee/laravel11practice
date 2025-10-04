@@ -17,10 +17,15 @@ php artisan install:api
 
 
 
-#### STRIPE PAYMENT INTEGRATION ##############
+#### STRIPE PAYMENT integration ##############
 composer require stripe/stripe-php
 https://dashboard.stripe.com/acct_1SESBl3YjWjGLtWG/test/dashboard
 https://docs.stripe.com/testing
+
+
+#### PAYPAL PAYMENT integration ##############
+composer require srmklive/paypal
+https://www.paypal.com/mep/dashboard
 
 
 
