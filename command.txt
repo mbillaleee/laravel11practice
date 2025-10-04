@@ -17,6 +17,14 @@ php artisan install:api
 
 
 
+#### STRIPE PAYMENT INTEGRATION ##############
+composer require stripe/stripe-php
+https://dashboard.stripe.com/acct_1SESBl3YjWjGLtWG/test/dashboard
+https://docs.stripe.com/testing
+
+
+
+
 
 
 Internal command

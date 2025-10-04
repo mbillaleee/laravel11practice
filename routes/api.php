@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\RegistationController;
+use App\Http\Controllers\OpenAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,8 @@ Route::post('login', [RegistationController::class, 'login'])->name('login');
 
 Route::middleware("auth:sanctum")->group(function(){
     Route::resource('posts', PostController::class);
+
+    Route::get('/generate-text', [OpenAPIController::class, 'generateText']);
 });
 
 
