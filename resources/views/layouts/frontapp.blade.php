@@ -31,13 +31,19 @@
 
             <!-- রাইট সাইড - মেনু -->
             <nav class="hidden md:flex space-x-6">
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">হোম</a>
+                <a href="{{ route('welcome') }}"
+                    class="text-gray-600 hover:text-blue-600 transition duration-300">হোম</a>
                 <a href="{{ route('stripe') }}" class="text-gray-600 hover:text-blue-600 transition duration-300">Stripe
                     Payment</a>
                 <a href="{{ route('paypal') }}" class="text-gray-600 hover:text-blue-600 transition duration-300">Paypal
                     Payment</a>
                 <a href="{{ route('geminiai') }}"
                     class="text-gray-600 hover:text-blue-600 transition duration-300">Geminiai</a>
+                <a href="{{ route('chatbot.index') }}"
+                    class="text-gray-600 hover:text-blue-600 transition duration-300">Chat
+                    GPT</a>
+                <a href="{{ route('deepseek.chat') }}"
+                    class="text-gray-600 hover:text-blue-600 transition duration-300">DeepSeek</a>
                 <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">প্যাকেজ</a>
                 <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">সেবাসমূহ</a>
                 <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">যোগাযোগ</a>

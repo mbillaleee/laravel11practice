@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DeepSeekAIController;
+use App\Http\Controllers\DeepSeekController;
 use App\Http\Controllers\GeminiAIController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
@@ -69,3 +71,14 @@ Route::post('geminiai/answers/ajax', [GeminiAIController::class, 'ajaxresponsean
 
 Route::get('/chatbot', [OpenAIController::class, 'index'])->name('chatbot.index');
 Route::post('/chatbot/send', [OpenAIController::class, 'send'])->name('chatbot.send');
+
+
+
+Route::prefix('deepseek')->group(function () {
+    Route::get('/chat', [DeepSeekController::class, 'chat'])->name('deepseek.chat');
+    Route::post('/send-message', [DeepSeekController::class, 'sendMessage'])->name('deepseek.send.message');
+    Route::get('/check-status', [DeepSeekController::class, 'checkApiStatus'])->name('deepseek.check.status');
+    Route::get('/test-connection', [DeepSeekController::class, 'testConnection'])->name('deepseek.test.connection');
+    Route::get('/models', [DeepSeekController::class, 'getModels'])->name('deepseek.models');
+    Route::get('/debug-info', [DeepSeekController::class, 'debugInfo'])->name('deepseek.debug.info');
+});
