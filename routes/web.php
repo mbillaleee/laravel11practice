@@ -3,6 +3,7 @@
 use App\Http\Controllers\GeminiAIController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OpenAIController;
 use App\Http\Controllers\OpenAPIController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PermissionController;
@@ -64,3 +65,7 @@ Route::get('paypal/payment-cancel', [PayPalController::class, 'paymentCancel'])-
 Route::get('geminiai', [GeminiAIController::class, 'index'])->name('geminiai');
 Route::post('geminiai/answers', [GeminiAIController::class, 'generateAnawers'])->name('generateAnawers');
 Route::post('geminiai/answers/ajax', [GeminiAIController::class, 'ajaxresponseanswers'])->name('ajaxresponseanswers');
+
+
+Route::get('/chatbot', [OpenAIController::class, 'index'])->name('chatbot.index');
+Route::post('/chatbot/send', [OpenAIController::class, 'send'])->name('chatbot.send');
