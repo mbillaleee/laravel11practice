@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,25 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #0070ba 0%, #1546a0 100%);
-        }
-        .card-shadow {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .paypal-blue {
-            background-color: #0070ba;
-        }
-        .paypal-blue:hover {
-            background-color: #005ea6;
-        }
-        .paypal-dark-blue {
-            background-color: #1546a0;
-        }
+    .gradient-bg {
+        background: linear-gradient(135deg, #0070ba 0%, #1546a0 100%);
+    }
+
+    .card-shadow {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .paypal-blue {
+        background-color: #0070ba;
+    }
+
+    .paypal-blue:hover {
+        background-color: #005ea6;
+    }
+
+    .paypal-dark-blue {
+        background-color: #1546a0;
+    }
     </style>
 </head>
 
@@ -54,49 +59,41 @@
             <div class="p-6">
                 <!-- Success/Error Messages -->
                 @if (session('success'))
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-4 flex items-center">
-                        <i class="fas fa-check-circle mr-2"></i>
-                        {{ session('success') }}
-                    </div>
+                <div
+                    class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-4 flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    {{ session('success') }}
+                </div>
                 @endif
 
                 @if (session('error'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4 flex items-center">
-                        <i class="fas fa-exclamation-triangle mr-2"></i>
-                        {{ session('error') }}
-                    </div>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4 flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    {{ session('error') }}
+                </div>
                 @endif
 
                 <!-- Payment Form -->
                 <form action="{{ route('paypal.payment') }}" method="POST" id="paymentForm">
                     @csrf
-                    
+
                     <!-- Amount Input Section -->
                     <div class="mb-6">
                         <label for="amount" class="block text-sm font-medium text-gray-700 mb-3 flex items-center">
-                            <i class="fas fa-dollar-sign mr-2 text-blue-500"></i> 
+                            <i class="fas fa-dollar-sign mr-2 text-blue-500"></i>
                             Enter Amount (USD)
                         </label>
-                        
+
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="text-gray-500 font-bold">$</span>
                             </div>
-                            <input 
-                                type="number" 
-                                name="amount" 
-                                id="amount"
-                                required 
-                                step="0.01" 
-                                min="0.01"
-                                max="10000"
+                            <input type="number" name="amount" id="amount" required step="0.01" min="0.01" max="10000"
                                 value="10.00"
                                 class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-lg font-semibold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                                placeholder="0.00"
-                                oninput="updateAmountPreview()"
-                            >
+                                placeholder="0.00" oninput="updateAmountPreview()">
                         </div>
-                        
+
                         <!-- Amount Preview -->
                         <div class="mt-3 bg-blue-50 rounded-lg p-3 border border-blue-200">
                             <div class="flex justify-between items-center text-sm">
@@ -110,22 +107,28 @@
                     <div class="mb-6">
                         <p class="text-sm font-medium text-gray-700 mb-2">Quick Select:</p>
                         <div class="grid grid-cols-3 gap-2">
-                            <button type="button" onclick="setAmount(5.00)" class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
+                            <button type="button" onclick="setAmount(5.00)"
+                                class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
                                 $5.00
                             </button>
-                            <button type="button" onclick="setAmount(10.00)" class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
+                            <button type="button" onclick="setAmount(10.00)"
+                                class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
                                 $10.00
                             </button>
-                            <button type="button" onclick="setAmount(20.00)" class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
+                            <button type="button" onclick="setAmount(20.00)"
+                                class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
                                 $20.00
                             </button>
-                            <button type="button" onclick="setAmount(50.00)" class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
+                            <button type="button" onclick="setAmount(50.00)"
+                                class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
                                 $50.00
                             </button>
-                            <button type="button" onclick="setAmount(100.00)" class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
+                            <button type="button" onclick="setAmount(100.00)"
+                                class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
                                 $100.00
                             </button>
-                            <button type="button" onclick="setAmount(500.00)" class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
+                            <button type="button" onclick="setAmount(500.00)"
+                                class="py-2 px-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition duration-200 text-sm font-medium">
                                 $500.00
                             </button>
                         </div>
@@ -137,19 +140,30 @@
                             <i class="fas fa-shield-alt text-green-500 text-lg mt-1 mr-3"></i>
                             <div>
                                 <h4 class="font-semibold text-green-800 text-sm">Secure Payment</h4>
-                                <p class="text-green-600 text-xs mt-1">Your payment information is encrypted and secure. We never share your details.</p>
+                                <p class="text-green-600 text-xs mt-1">Your payment information is encrypted and secure.
+                                    We never share your details.</p>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Security Features -->
+                    <div
+                        class="flex items-center justify-center mb-4 text-sm text-gray-500 bg-green-50 rounded-lg p-3 border border-green-200">
+                        <i class="fas fa-home mr-2 text-green-500"></i>
+                        <span><a href="{{ route('welcome') }}">Home</a></span>
+                    </div>
+
+
+
                     <!-- Submit Button -->
-                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold py-4 px-4 rounded-lg transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold py-4 px-4 rounded-lg transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                         <i class="fab fa-paypal mr-3 text-xl"></i>
                         Pay <span id="payButtonAmount">$10.00</span> with PayPal
                     </button>
                 </form>
             </div>
-            
+
             <!-- Card Footer -->
             <div class="bg-gray-50 px-6 py-4 border-t">
                 <div class="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
@@ -167,77 +181,79 @@
 
         <!-- Additional Info -->
         <div class="mt-6 text-center text-white text-sm">
-            <p>Need help? <a href="#" class="underline hover:text-blue-200 transition duration-200">Contact our support team</a></p>
+            <p>Need help? <a href="#" class="underline hover:text-blue-200 transition duration-200">Contact our support
+                    team</a></p>
             <p class="mt-2 text-blue-200">All major credit cards accepted through PayPal</p>
         </div>
     </div>
 
     <script>
-        // Function to update amount preview
-        function updateAmountPreview() {
-            const amountInput = document.getElementById('amount');
-            const amountPreview = document.getElementById('amountPreview');
-            const payButtonAmount = document.getElementById('payButtonAmount');
-            
-            let amount = parseFloat(amountInput.value) || 0;
-            
-            // Ensure minimum amount
-            if (amount < 0.01) {
-                amount = 0.01;
-                amountInput.value = '0.01';
-            }
-            
-            // Format currency
-            const formatter = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2
-            });
-            
-            const formattedAmount = formatter.format(amount);
-            
-            amountPreview.textContent = formattedAmount;
-            payButtonAmount.textContent = formattedAmount;
+    // Function to update amount preview
+    function updateAmountPreview() {
+        const amountInput = document.getElementById('amount');
+        const amountPreview = document.getElementById('amountPreview');
+        const payButtonAmount = document.getElementById('payButtonAmount');
+
+        let amount = parseFloat(amountInput.value) || 0;
+
+        // Ensure minimum amount
+        if (amount < 0.01) {
+            amount = 0.01;
+            amountInput.value = '0.01';
         }
 
-        // Function to set quick amount
-        function setAmount(amount) {
-            const amountInput = document.getElementById('amount');
-            amountInput.value = amount.toFixed(2);
-            updateAmountPreview();
-            
-            // Add visual feedback
-            const buttons = document.querySelectorAll('button[type="button"]');
-            buttons.forEach(btn => {
-                if (btn.textContent.includes(`$${amount.toFixed(2)}`)) {
-                    btn.classList.remove('bg-gray-100', 'text-gray-700');
-                    btn.classList.add('bg-blue-100', 'text-blue-700', 'border', 'border-blue-300');
-                    
-                    // Remove highlight after 1 second
-                    setTimeout(() => {
-                        btn.classList.remove('bg-blue-100', 'text-blue-700', 'border', 'border-blue-300');
-                        btn.classList.add('bg-gray-100', 'text-gray-700');
-                    }, 1000);
-                }
-            });
-        }
+        // Format currency
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2
+        });
 
-        // Form validation
-        document.getElementById('paymentForm').addEventListener('submit', function(e) {
-            const amountInput = document.getElementById('amount');
-            const amount = parseFloat(amountInput.value);
-            
-            if (amount < 0.01) {
-                e.preventDefault();
-                alert('Please enter an amount of at least $0.01');
-                amountInput.focus();
+        const formattedAmount = formatter.format(amount);
+
+        amountPreview.textContent = formattedAmount;
+        payButtonAmount.textContent = formattedAmount;
+    }
+
+    // Function to set quick amount
+    function setAmount(amount) {
+        const amountInput = document.getElementById('amount');
+        amountInput.value = amount.toFixed(2);
+        updateAmountPreview();
+
+        // Add visual feedback
+        const buttons = document.querySelectorAll('button[type="button"]');
+        buttons.forEach(btn => {
+            if (btn.textContent.includes(`$${amount.toFixed(2)}`)) {
+                btn.classList.remove('bg-gray-100', 'text-gray-700');
+                btn.classList.add('bg-blue-100', 'text-blue-700', 'border', 'border-blue-300');
+
+                // Remove highlight after 1 second
+                setTimeout(() => {
+                    btn.classList.remove('bg-blue-100', 'text-blue-700', 'border', 'border-blue-300');
+                    btn.classList.add('bg-gray-100', 'text-gray-700');
+                }, 1000);
             }
         });
+    }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateAmountPreview();
-        });
+    // Form validation
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+        const amountInput = document.getElementById('amount');
+        const amount = parseFloat(amountInput.value);
+
+        if (amount < 0.01) {
+            e.preventDefault();
+            alert('Please enter an amount of at least $0.01');
+            amountInput.focus();
+        }
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateAmountPreview();
+    });
     </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GeminiAIController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OpenAPIController;
@@ -58,3 +59,8 @@ Route::get('paypal', [PaypalController::class, 'index'])->name('paypal');
 Route::post('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
 Route::get('paypal/payment-success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
 Route::get('paypal/payment-cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment.cancel');
+
+
+Route::get('geminiai', [GeminiAIController::class, 'index'])->name('geminiai');
+Route::post('geminiai/answers', [GeminiAIController::class, 'generateAnawers'])->name('generateAnawers');
+Route::post('geminiai/answers/ajax', [GeminiAIController::class, 'ajaxresponseanswers'])->name('ajaxresponseanswers');
